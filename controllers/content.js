@@ -41,11 +41,13 @@ export const getWebContent = async (req, res) => {
             }
         } catch (err) {
             console.error("Error in the reading chunks of response", err);
+            res.statusCode(500).send(err)
         }
         
-        res.send(result)
+        res.statusCode(200).send(result)
     } catch (error) {
         console.log("Ooops, smth wrong in the controller getWebContent", error)
+        res.statusCode(500).send(error)
     }
 
 }
